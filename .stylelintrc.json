@@ -1,0 +1,11 @@
+{
+  "extends": ["stylelint-config-standard"],
+  "plugins": ["stylelint-order"],
+  "rules": {
+    "color-function-notation": "legacy",
+    "alpha-value-notation": "number",
+    "keyframes-name-pattern": null,
+    "custom-property-pattern": null,
+    "selector-class-pattern": null
+  }
+}

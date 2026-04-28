@@ -1,0 +1,36 @@
+{
+  "name": "devmark",
+  "version": "0.1.0",
+  "description": "AI-powered bookmark manager — automatically tags and summarises saved URLs using Claude",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "lint:js": "eslint src/js netlify/functions",
+    "lint:css": "stylelint src/css/**/*.css",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.{html,css,js,json}": [
+      "prettier --write"
+    ],
+    "*.js": [
+      "eslint --fix"
+    ],
+    "*.css": [
+      "stylelint --fix"
+    ]
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.0.0",
+    "eslint": "^9.0.0",
+    "globals": "^15.0.0",
+    "husky": "^9.0.0",
+    "lint-staged": "^15.0.0",
+    "prettier": "^3.0.0",
+    "stylelint": "^16.0.0",
+    "stylelint-config-standard": "^36.0.0",
+    "stylelint-order": "^6.0.0"
+  }
+}

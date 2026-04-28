@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Devmark — an AI-powered bookmark manager that automatically tags and summarises saved URLs using Claude."
+    />
+    <title>Devmark — AI Bookmark Manager</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="/public/favicon.svg" type="image/svg+xml" />
+
+    <!-- Preload variable fonts -->
+    <link
+      rel="preload"
+      href="/public/fonts/inter-variable.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/public/fonts/jetbrains-mono-variable.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <!-- Design tokens must load first -->
+    <link rel="stylesheet" href="src/css/tokens.css" />
+    <link rel="stylesheet" href="src/css/reset.css" />
+    <link rel="stylesheet" href="src/css/typography.css" />
+    <link rel="stylesheet" href="src/css/layout.css" />
+    <link rel="stylesheet" href="src/css/components/form.css" />
+    <link rel="stylesheet" href="src/css/components/card.css" />
+    <link rel="stylesheet" href="src/css/components/sidebar.css" />
+    <link rel="stylesheet" href="src/css/components/dialog.css" />
+    <link rel="stylesheet" href="src/css/components/toast.css" />
+    <!-- Utilities last so they can override component styles -->
+    <link rel="stylesheet" href="src/css/utilities.css" />
+  </head>
+  <body>
+    <!-- Skip to main content for keyboard and screen reader users -->
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <!-- Polite announcer for dynamic state changes (filter, add, delete) -->
+    <div id="announcer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
+    <!-- Assertive toast notification region -->
+    <div
+      id="toast-region"
+      role="region"
+      aria-label="Notifications"
+      aria-live="assertive"
+      aria-atomic="false"
+    ></div>
+
+    <div id="app">
+      <!-- Site header -->
+      <header class="site-header" role="banner">
+        <a href="/" class="site-logo" aria-label="Devmark — go to homepage">
+          <svg class="site-logo__icon" aria-hidden="true" focusable="false" width="22" height="22">
+            <use href="#icon-bookmark"></use>
+          </svg>
+          <span class="site-logo__name">Devmark</span>
+        </a>
+        <p class="site-header__tagline" aria-hidden="true">AI-powered bookmarks</p>
+      </header>
+
+      <!-- Two-column layout: tag sidebar + main content -->
+      <div class="app-layout">
+        <!-- Tag filter sidebar (desktop) -->
+        <aside class="tag-sidebar" aria-label="Filter bookmarks by tag">
+          <h2 class="tag-sidebar__heading">Tags</h2>
+          <nav aria-label="Tag filters">
+            <ul class="tag-list" role="list" id="tag-list">
+              <li>
+                <button
+                  class="tag-list__btn is-active"
+                  data-tag=""
+                  aria-current="true"
+                  aria-pressed="true"
+                >
+                  <span class="tag-list__name">All bookmarks</span>
+                  <span class="tag-list__count" id="tag-count-all" aria-label="0 bookmarks">0</span>
+                </button>
+              </li>
+            </ul>
+          </nav>
+        </aside>
+
+        <!-- Main content area -->
+        <main id="main-content" class="main-content">
+          <!-- Add bookmark form -->
+          <section aria-label="Add a bookmark">
+            <form id="add-form" class="form-section" novalidate>
+              <div class="url-form__field">
+                <label for="url-input" class="url-form__label"> Paste a URL to save </label>
+                <div class="url-form__input-row">
+                  <input
+                    type="url"
+                    id="url-input"
+                    name="url"
+                    class="url-form__input"
+                    placeholder="https://example.com/article"
+                    autocomplete="url"
+                    autocorrect="off"
+                    autocapitalize="off"
+                    spellcheck="false"
+                    aria-describedby="url-error"
+                    aria-required="true"
+                  />
+                  <button
+                    type="submit"
+                    id="submit-btn"
+                    class="url-form__submit"
+                    aria-label="Save bookmark"
+                  >
+                    <svg
+                      class="btn-icon btn-icon--loader"
+                      aria-hidden="true"
+                      focusable="false"
+                      width="16"
+                      height="16"
+                    >
+                      <use href="#icon-loader"></use>
+                    </svg>
+                    <svg
+                      class="btn-icon btn-icon--bookmark"
+                      aria-hidden="true"
+                      focusable="false"
+                      width="16"
+                      height="16"
+                    >
+                      <use href="#icon-bookmark"></use>
+                    </svg>
+                    <span class="btn-label">Save</span>
+                  </button>
+                </div>
+                <div id="url-error" class="url-form__error" role="alert" aria-live="polite"></div>
+              </div>
+            </form>
+          </section>
+
+          <!-- Tag cloud for mobile (hidden on desktop via CSS) -->
+          <nav
+            class="tag-cloud-mobile"
+            id="tag-cloud-mobile"
+            aria-label="Filter by tag"
+            hidden
+          ></nav>
+
+          <!-- Bookmark list -->
+          <section class="bookmarks-section" aria-label="Saved bookmarks">
+            <div id="bookmark-list" class="bookmark-list">
+              <!-- Empty state — shown when no bookmarks exist -->
+              <div class="bookmark-empty" id="empty-state" role="status">
+                <svg
+                  class="bookmark-empty__icon"
+                  aria-hidden="true"
+                  focusable="false"
+                  width="52"
+                  height="52"
+                >
+                  <use href="#icon-inbox"></use>
+                </svg>
+                <h2 class="bookmark-empty__heading">No bookmarks yet</h2>
+                <p class="bookmark-empty__body">
+                  Paste a URL above and Claude will summarise it and apply relevant tags
+                  automatically.
+                </p>
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <!-- Delete confirmation dialog (native <dialog> element) -->
+    <dialog
+      id="confirm-dialog"
+      class="confirm-dialog"
+      aria-labelledby="dialog-title"
+      aria-describedby="dialog-desc"
+    >
+      <h2 id="dialog-title" class="confirm-dialog__title">Delete bookmark?</h2>
+      <p id="dialog-desc" class="confirm-dialog__body">
+        This bookmark will be permanently removed. This action cannot be undone.
+      </p>
+      <div class="confirm-dialog__actions">
+        <button type="button" class="btn btn--ghost" id="dialog-cancel">Cancel</button>
+        <button type="button" class="btn btn--danger" id="dialog-confirm">Delete</button>
+      </div>
+    </dialog>
+
+    <script type="module" src="src/js/main.js" defer></script>
+  </body>
+</html>

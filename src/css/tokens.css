@@ -1,0 +1,54 @@
+:root {
+  /* Colour */
+  --c-bg: #111012;
+  --c-surface: #1c1a1e;
+  --c-surface-2: #272529;
+  --c-accent: #f0a500;
+  --c-accent-dim: #c8890a;
+  --c-text-1: #f2efe8;
+  --c-text-2: #a09280;
+  --c-text-3: #6b6158;
+  --c-border: rgba(240, 165, 0, 0.12);
+  --c-success: #4ade80;
+  --c-error: #f87171;
+
+  /* Typography */
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Cascadia Code', 'Fira Code', monospace;
+
+  /* Type scale */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+
+  /* Spacing — 4px base scale */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+
+  /* Border radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-pill: 9999px;
+
+  /* Motion */
+  --duration-fast: 120ms;
+  --duration-base: 200ms;
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+
+  /* Z-index */
+  --z-dialog: 100;
+  --z-toast: 200;
+}

@@ -1,0 +1,107 @@
+.form-section {
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+}
+
+.url-form__label {
+  color: var(--c-text-2);
+  display: block;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  margin-block-end: var(--space-2);
+}
+
+.url-form__input-row {
+  display: flex;
+  gap: var(--space-3);
+}
+
+.url-form__input {
+  background: var(--c-surface-2);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-md);
+  color: var(--c-text-1);
+  flex: 1;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  min-width: 0;
+  padding: var(--space-3) var(--space-4);
+  transition: border-color var(--duration-fast) var(--ease-out);
+}
+
+.url-form__input::placeholder {
+  color: var(--c-text-3);
+  font-family: var(--font-sans);
+}
+
+.url-form__input:hover {
+  border-color: rgba(240, 165, 0, 0.3);
+}
+
+.url-form__input:focus {
+  border-color: var(--c-accent);
+  outline: none;
+}
+
+.url-form__input.has-error {
+  border-color: var(--c-error);
+}
+
+.url-form__submit {
+  align-items: center;
+  background: var(--c-accent);
+  border-radius: var(--radius-md);
+  color: var(--c-bg);
+  display: flex;
+  flex-shrink: 0;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  gap: var(--space-2);
+  padding-block: var(--space-3);
+  padding-inline: var(--space-5);
+  transition:
+    background-color var(--duration-fast) var(--ease-out),
+    opacity var(--duration-fast) var(--ease-out);
+}
+
+.url-form__submit:hover {
+  background: var(--c-accent-dim);
+}
+
+.url-form__submit:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* Loading state: swap bookmark icon for spinner */
+.url-form__submit .btn-icon--loader {
+  display: none;
+}
+
+.url-form__submit[aria-busy='true'] .btn-icon--bookmark {
+  display: none;
+}
+
+.url-form__submit[aria-busy='true'] .btn-icon--loader {
+  animation: spin 0.8s linear infinite;
+  display: block;
+}
+
+.url-form__submit[aria-busy='true'] .btn-label {
+  display: none;
+}
+
+@keyframes spin {
+  to {
+    rotate: 360deg;
+  }
+}
+
+.url-form__error {
+  color: var(--c-error);
+  font-size: var(--text-sm);
+  margin-block-start: var(--space-2);
+  min-block-size: 1.25em;
+}

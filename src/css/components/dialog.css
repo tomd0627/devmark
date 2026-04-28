@@ -1,0 +1,68 @@
+.confirm-dialog {
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-xl);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  inline-size: min(90vw, 400px);
+  padding: var(--space-6);
+}
+
+.confirm-dialog::backdrop {
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.confirm-dialog__title {
+  color: var(--c-text-1);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  margin-block-end: var(--space-2);
+}
+
+.confirm-dialog__body {
+  color: var(--c-text-2);
+  font-size: var(--text-sm);
+  line-height: 1.6;
+  margin-block-end: var(--space-6);
+}
+
+.confirm-dialog__actions {
+  display: flex;
+  gap: var(--space-3);
+  justify-content: flex-end;
+}
+
+/* Shared button base */
+.btn {
+  align-items: center;
+  border-radius: var(--radius-md);
+  display: inline-flex;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  gap: var(--space-2);
+  padding-block: var(--space-2);
+  padding-inline: var(--space-4);
+  transition:
+    background-color var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out);
+}
+
+.btn--ghost {
+  background: transparent;
+  color: var(--c-text-2);
+}
+
+.btn--ghost:hover {
+  background: var(--c-surface-2);
+  color: var(--c-text-1);
+}
+
+.btn--danger {
+  background: rgba(248, 113, 113, 0.12);
+  border: 1px solid rgba(248, 113, 113, 0.2);
+  color: var(--c-error);
+}
+
+.btn--danger:hover {
+  background: rgba(248, 113, 113, 0.22);
+}

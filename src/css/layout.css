@@ -9,8 +9,8 @@
   inset-inline-start: var(--space-2);
   padding: var(--space-2) var(--space-4);
   position: absolute;
-  translate: 0 -100%;
   transition: translate var(--duration-fast) var(--ease-out);
+  translate: 0 -100%;
   z-index: var(--z-toast);
 }
 
@@ -73,7 +73,7 @@
 
 /* Main content */
 .main-content {
-  min-width: 0;
+  min-inline-size: 0;
   padding: var(--space-6);
 }
 
@@ -102,7 +102,7 @@
   }
 
   .tag-cloud-mobile {
-    display: none !important;
+    display: none;
   }
 }
 

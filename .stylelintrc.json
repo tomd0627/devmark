@@ -2,6 +2,7 @@
   "extends": ["stylelint-config-standard"],
   "plugins": ["stylelint-order"],
   "rules": {
+    "order/properties-alphabetical-order": true,
     "color-function-notation": "legacy",
     "alpha-value-notation": "number",
     "keyframes-name-pattern": null,

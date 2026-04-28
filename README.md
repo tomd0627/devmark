@@ -2,8 +2,6 @@
 
 An AI-powered bookmark manager. Paste a URL and Claude automatically fetches the page, generates a concise summary, and applies relevant tags. Bookmarks are stored in `localStorage` — no account or backend database required.
 
-**Live demo:** https://tomdeluca-devmark.netlify.app/
-
 ---
 
 ## Features

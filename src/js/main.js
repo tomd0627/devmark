@@ -3,6 +3,7 @@ import { initForm } from './form.js';
 import { store } from './store.js';
 import { renderTags, setActive } from './tags.js';
 import { announce, confirmDelete, initDialog, toast } from './ui.js';
+import { qs } from './utils.js';
 
 async function injectSprite() {
   try {
@@ -59,7 +60,7 @@ function init() {
     renderAll(updated, handlers());
     renderTags(updated, handleTagClick);
     // Move focus to the newly added card for accessibility
-    document.querySelector(`[data-id="${bookmark.id}"] a`)?.focus();
+    qs(`[data-id="${bookmark.id}"] a`)?.focus();
   });
 }
 

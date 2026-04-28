@@ -1,4 +1,4 @@
-import { ApiError, summarise } from './api.js';
+import { ApiError, summarize } from './api.js';
 import { store } from './store.js';
 import { announce, clearFieldError, showFieldError, toast } from './ui.js';
 import { generateId, normaliseUrl } from './utils.js';
@@ -8,7 +8,7 @@ const ERROR_MESSAGES = {
   FETCH_FAILED: "Could not reach that URL — check it's publicly accessible.",
   FETCH_TIMEOUT: 'The URL took too long to respond (10 s limit).',
   CONTENT_BLOCKED: "That URL doesn't appear to be an HTML page.",
-  NO_CONTENT: 'Not enough readable content on that page to summarise.',
+  NO_CONTENT: 'Not enough readable content on that page to summarize.',
   CLAUDE_ERROR: "Claude couldn't process the page. Try again.",
   PARSE_ERROR: 'Got an unexpected response from the server.',
   METHOD_NOT_ALLOWED: 'Internal configuration error. Please refresh.',
@@ -53,7 +53,7 @@ export function initForm(onBookmarkAdded) {
     setLoading(submitBtn, true);
 
     try {
-      const data = await summarise(url);
+      const data = await summarize(url);
 
       const bookmark = {
         id: generateId(),

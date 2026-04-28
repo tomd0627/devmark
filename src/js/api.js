@@ -7,7 +7,7 @@ export class ApiError extends Error {
   }
 }
 
-export async function summarise(url) {
+export async function summarize(url) {
   let resp;
   try {
     resp = await fetch('/.netlify/functions/summarize', {

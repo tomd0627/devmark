@@ -22,15 +22,6 @@ export function qsa(selector, root = document) {
   return [...root.querySelectorAll(selector)];
 }
 
-export function escapeHtml(str) {
-  return String(str)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#39;');
-}
-
 export function generateId() {
   return `bm_${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 7)}`;
 }

@@ -2,7 +2,7 @@
 
 ## Current Phase
 
-**Phase 7 complete** — Lighthouse audit
+**Phase 8 complete** — README + recruiter audit
 
 Live URL: https://tomdeluca-devmark.netlify.app/
 
@@ -39,6 +39,7 @@ npm run format:check ✓
 ## Lighthouse Results (Phase 7)
 
 Audited against local `npx serve .` on port 3000:
+
 - Performance: **99** (target ≥90) ✓
 - Accessibility: **100** (target ≥95) ✓
 - Best Practices: **100** ✓
@@ -46,15 +47,16 @@ Audited against local `npx serve .` on port 3000:
 
 Three "insight" audits flagged but all non-actionable: cache headers (dev server artifact — Netlify headers already configured), preconnect (no external origins — all assets self-hosted), render-blocking CSS (no build tool by design; score still 99).
 
+## Recruiter Audit Fixes (Phase 8)
+
+- `escapeHtml` removed from `utils.js` — was exported but never imported (dead code)
+- `summarise` → `summarize` throughout `api.js` and `form.js` — British spelling was inconsistent with rest of codebase and endpoint name
+- `document.querySelector` → `qs()` in `main.js` — inconsistent with project's own helper
+- `README.md` written from scratch — full setup, env var, local dev, deployment, security notes
+
 ## Exact Next Task
 
-**Phase 8 — README + recruiter audit**
-- Write full `README.md` (project description, setup, env var, local dev, deployment)
-- Recruiter-perspective review of code and UX
-
-## Remaining Phases
-
-- **Phase 8** — README + recruiter audit
+Project is complete. All phases shipped.
 
 ## Possible Post-Completion Work
 

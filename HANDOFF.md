@@ -2,7 +2,9 @@
 
 ## Current Phase
 
-**Phase 4 complete** — Linting + pre-commit hooks
+**Phase 5 complete** — Deployed to Netlify
+
+Live URL: https://tomdeluca-devmark.netlify.app/
 
 ## What Was Just Completed
 
@@ -36,13 +38,12 @@ npm run format:check ✓
 
 ## Exact Next Task
 
-**Phase 5: Deployment**
+No planned next phase. The app is feature-complete and deployed. Possible future work:
 
-- Add `ANTHROPIC_API_KEY` to Netlify environment variables (site → Environment variables)
-- Push to GitHub and connect to Netlify (or run `netlify deploy --prod`)
-- Smoke-test the live function: `curl -X POST https://<site>/.netlify/functions/summarize -H 'Content-Type: application/json' -d '{"url":"https://example.com"}'`
-- Verify CSP headers are correct in production (`curl -I https://<site>/`)
-- (Optional) Add a `netlify.toml` redirect rule if a custom domain is used
+- Custom domain (add CNAME in Netlify + update CSP `connect-src` if needed)
+- LocalStorage persistence across page reloads (currently in-memory only)
+- Export bookmarks as JSON/CSV
+- Bulk delete or bulk re-tag
 
 ## All Decisions Made
 

@@ -2,7 +2,7 @@
 
 ## Current Phase
 
-**Phase 5 complete** — Deployed to Netlify
+**Phase 7 complete** — Lighthouse audit
 
 Live URL: https://tomdeluca-devmark.netlify.app/
 
@@ -36,12 +36,29 @@ npm run lint:css    ✓
 npm run format:check ✓
 ```
 
+## Lighthouse Results (Phase 7)
+
+Audited against local `npx serve .` on port 3000:
+- Performance: **99** (target ≥90) ✓
+- Accessibility: **100** (target ≥95) ✓
+- Best Practices: **100** ✓
+- SEO: **100** ✓
+
+Three "insight" audits flagged but all non-actionable: cache headers (dev server artifact — Netlify headers already configured), preconnect (no external origins — all assets self-hosted), render-blocking CSS (no build tool by design; score still 99).
+
 ## Exact Next Task
 
-No planned next phase. The app is feature-complete and deployed. Possible future work:
+**Phase 8 — README + recruiter audit**
+- Write full `README.md` (project description, setup, env var, local dev, deployment)
+- Recruiter-perspective review of code and UX
+
+## Remaining Phases
+
+- **Phase 8** — README + recruiter audit
+
+## Possible Post-Completion Work
 
 - Custom domain (add CNAME in Netlify + update CSP `connect-src` if needed)
-- LocalStorage persistence across page reloads (currently in-memory only)
 - Export bookmarks as JSON/CSV
 - Bulk delete or bulk re-tag
 

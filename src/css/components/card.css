@@ -147,7 +147,7 @@
 }
 
 /* Empty state */
-.bookmark-empty {
+.bookmark-empty:not([hidden]) {
   align-items: center;
   display: flex;
   flex-direction: column;

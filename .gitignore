@@ -26,6 +26,7 @@ desktop.ini
 .eslintcache
 .stylelintcache
 .prettiercache
+deno.lock
 
 # Logs
 *.log

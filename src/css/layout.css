@@ -5,10 +5,10 @@
   color: var(--c-bg);
   font-size: var(--text-sm);
   font-weight: 600;
-  inset-block-start: var(--space-2);
+  inset-block-start: 0;
   inset-inline-start: var(--space-2);
   padding: var(--space-2) var(--space-4);
-  position: absolute;
+  position: fixed;
   transition: translate var(--duration-fast) var(--ease-out);
   translate: 0 -100%;
   z-index: var(--z-toast);
